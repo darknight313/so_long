@@ -6,7 +6,7 @@
 /*   By: ashirzad <ashirzad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 12:25:06 by ashirzad          #+#    #+#             */
-/*   Updated: 2024/04/04 14:40:43 by ashirzad         ###   ########.fr       */
+/*   Updated: 2024/04/04 18:20:12 by ashirzad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,28 @@ int	valid_map(t_data *data);
 int	rectangular_shape(t_data *data);
 int	closed_map(t_data *data);
 int	check_item(t_data *data);
+int	valid_character(t_data *data);
 
 int	valid_map(t_data *data)
 {
-	if (!rectangular_shape(data))
+	if (!data->map.line)
+	{
+		ft_printf("Error\nmap does not exist\n");
 		return (0);
-	else if (!closed_map(data))
+	}
+	else if (data->map.height > 1300)
+	{
+		free_ptr(data->map.line);
+		ft_printf("Error\nmap too big to be displayed\n");
 		return (0);
-	else if (!check_item(data))
+	}
+	else if (!rectangular_shape(data) || !closed_map(data) \
+		|| !check_item(data) || !valid_character(data) || !valid_path(data))
+	{
+		free_ptr(data->map.line);
+		ft_printf("Error\ninvalid map\n");
 		return (0);
-	else if (!valid_path(data))
-		return (0);
+	}
 	return (1);
 }
 
@@ -89,5 +100,28 @@ int	check_item(t_data *data)
 	}
 	if (data->map.prize_len <= 0 || e_c != 1 || p_c != 1)
 		return (0);
+	return (1);
+}
+
+int	valid_character(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (data->map.line[i])
+	{
+		j = 0;
+		while (data->map.line[i][j])
+		{
+			if (data->map.line[i][j] != '1' && data->map.line[i][j] != '0' \
+				&& data->map.line[i][j] != 'E' && data->map.line[i][j] != 'P' \
+				&& data->map.line[i][j] != '\n' && data->map.line[i][j] != 'C')
+				return (0);
+			j++;
+		}
+		i++;
+	}
 	return (1);
 }

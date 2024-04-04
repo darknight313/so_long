@@ -3,8 +3,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 NAME = so_long
 SRC_DIR = src
-SRCS = $(SRC_DIR)/so_long.c $(SRC_DIR)/utils.c \
-		$(SRC_DIR)/struct_image.c $(SRC_DIR)/display_map.c $(SRC_DIR)/moves.c $(SRC_DIR)/valid_map.c $(SRC_DIR)/flood_fill.c
+SRCS = $(SRC_DIR)/so_long.c $(SRC_DIR)/utils.c $(SRC_DIR)/struct_image.c $(SRC_DIR)/display_map.c \
+		$(SRC_DIR)/moves.c $(SRC_DIR)/valid_map.c $(SRC_DIR)/flood_fill.c $(SRC_DIR)/map_init.c
 OBJ = $(SRCS:.c=.o)
 
 MLX_HEADER = lib/MLX42/include/MLX42

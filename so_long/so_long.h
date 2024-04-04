@@ -6,7 +6,7 @@
 /*   By: ashirzad <ashirzad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 09:39:43 by ashirzad          #+#    #+#             */
-/*   Updated: 2024/04/04 14:29:01 by ashirzad         ###   ########.fr       */
+/*   Updated: 2024/04/04 17:44:26 by ashirzad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,19 +79,24 @@ int		valid_map(t_data *data);
 int		rectangular_shape(t_data *data);
 int		closed_map(t_data *data);
 int		check_item(t_data *data);
+int		check_map(char **ptr);
 
-//utils.c
+// map_init.c
+void	map_init(t_data *data, char *map);
 void	store_map(t_data *data, char *map);
 void	set_values(t_data *data);
 int		only_character(char *str, int c);
+
+//utils.c
+void	free_ptr(char **ptr);
 void	value_init(t_data *data);
 int		remove_prize(t_data *data);
+int		map_len(char *map);
 
 //flood_fill is algorithm to check whether the map is valid or not
 int		valid_path(t_data *data);
 char	**copy_map(t_data *data);
 void	flood_fill(char **map, int y, int x);
-int		check_map(char **ptr);
-void	free_ptr(char **ptr);
+int		valid_character(t_data *data);
 
 #endif

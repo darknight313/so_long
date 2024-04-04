@@ -6,7 +6,7 @@
 /*   By: ashirzad <ashirzad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/29 15:35:51 by ashirzad          #+#    #+#             */
-/*   Updated: 2024/04/03 17:59:17 by ashirzad         ###   ########.fr       */
+/*   Updated: 2024/04/04 17:31:04 by ashirzad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,15 +79,4 @@ int	check_map(char **ptr)
 		i++;
 	}
 	return (1);
-}
-
-void	free_ptr(char **ptr)
-{
-	int	i;
-
-	i = 0;
-	while (ptr[i])
-		free(ptr[i++]);
-	free(ptr);
-	ptr = NULL;
 }
